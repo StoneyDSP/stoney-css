@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("../../../../public/fonts/microsoft/cascadia/font-cascadia-dynamic.css") layer(fontFace);
+@import url("./framework/fonts/microsoft/cascadia/font-cascadia-dynamic.css") layer(fontFace);
 /* @import url("./framework/reset.css") layer(reset); */
 @import url("./framework/support.css") layer(defaults.support);
 @import url("./framework/defaults.css") layer(defaults);

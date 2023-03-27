@@ -2,7 +2,7 @@
 /* Calculate fractional font size using responsive 'vw' prop...*/
 /* Set all cascaded font sizes to be relative */
 body {
-  font-family: 'Poppins';
+  font-family: 'Cascadia';
   font-size: calc(15.00px + 0.390625vw);
   background-color: var(--brand-color__black);
   display: block;

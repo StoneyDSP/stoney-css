@@ -6,11 +6,31 @@ This framework was designed by querying the unneccessary complexities that tend 
 
 Crucially, it's all done using native CSS3 - no plugins, no libraries, no additional dependencies nor build step...
 
-Just put these files where your CSS is (i.e., './src/assets/css/') and begin styling your page from 'styles.css' exactly as you normally would. Like this:
+Just put these files where your CSS is (i.e., './src/assets/css/stoney-css'), @import the 'styles.css' within, and begin styling your page exactly as you normally would. Like this:
+
+```
+@import url("./stoney-css/styles.css");
+
+
+/* Begin here... */
+
+.container {
+  display: flex;
+}
+
+img.logo {
+  height: 50px;
+  width: 300px;
+}
+
+/* Etc... */
+```
+
+It's a good idea to break your page down into 'components', such as header, footer, landing article, image gallery, contact section... etc. You can make some custom site-wide defaults in the 'components' folder, use the '@import url() layer();' syntax as seen below (from stoney-css/styles.css), and then over-ride those on a per-usage basis in your own master css files. This concept somewhat resembles inheritance in OOP...
 
 ```
 @charset "UTF-8";
-/* @import url("../../fonts/poppins/latin/font-poppins.css") layer(fontFace); */
+@import url("../../../../public/fonts/microsoft/cascadia/font-cascadia-dynamic.css") layer(fontFace);
 /* @import url("./framework/reset.css") layer(reset); */
 @import url("./framework/support.css") layer(defaults.support);
 @import url("./framework/defaults.css") layer(defaults);
@@ -23,22 +43,57 @@ Just put these files where your CSS is (i.e., './src/assets/css/') and begin sty
 
 /* @import url("./framework/debug/dbg.css") layer(site.dbg); */
 /* @import url("./framework/debug/lint.css") layer(site.dbg.lint); */
-
-/* Begin here... */
-.container {
-  display: flex;
-}
-img.logo {
-  height: 50px;
-  width: 300px;
-}
-/* Etc... */
 ```
-
-It's a good idea to break your page down into 'components', such as header, footer, landing article, image gallery, contact section... etc. You can make some site-wide defaults in the 'components' folder, use the '@import url() layer();' syntax as seen above, and then over-ride those on a per-usage basis (all in 'styles.css'). This concept somewhat resembles inheritance in OOP.
 
 When you check your computed CSS styles in Chromium Devtools, the @layer syntax will show you exactly where the defaults were specified (and what they were), and exactly where they have been over-ridden. In most cases, the total query list shall usually be a maximum of two sources.
 
 Without such a strategy, it is notoriously easy to lose track of specificity and the ability to control markup styles quickly gets out of hand, meaning revisions and refactors are more likely than anybody would wish for (IMO this is what gives rise to the over-dependence on third-party libs to perform native CSS coding tasks).
+
+Responsive text in CSS:
+```
+body {
+  font-size: calc(15px + 0.390625vw);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,  {
+  display: block;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+h1 {
+  font-size: 2.0em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+}
+h2 {
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+}
+h3 {
+  font-size: 1.17em;
+  margin-top: 1.0em;
+  margin-bottom: 1.0em;
+}
+h4 {
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+}
+h5 {
+  font-size: 0.83em;
+  margin-top: 1.67em;
+  margin-bottom: 1.67em;
+}
+h6 {
+  font-size: 0.67em;
+  margin-top: 2.33em;
+  margin-bottom: 2.33em;
+}
+```
 
 references: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer">Mdn Web Docs: CSS @layers</a>
